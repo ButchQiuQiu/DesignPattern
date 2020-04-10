@@ -65,7 +65,7 @@ public final class DataUtil {
 				if(fieldName.indexOf("fk_")==0) {
 					data=rs.getObject(fieldName);
 					//利用反射获取外键类对应的类名
-					String fkClassName=cs.getPackageName()+"."+fieldName.substring(3,4).toUpperCase()+fieldName.substring(4);
+					String fkClassName=cs.getPackage().getName()+"."+fieldName.substring(3,4).toUpperCase()+fieldName.substring(4);
 					//利用反射获取外键类对应的表名
 					String fkTableName=(String)Class.forName(fkClassName).getField("tablename").get(null);
 					//迭代计算出这外键表对象
